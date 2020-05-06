@@ -1,0 +1,1 @@
+Set-ADObject -Identity:"CN=Max Mustermann1,OU=Benutzer,OU=Team ABC (ZZWGFZ_ABC),OU=ABC Teams,DC=int,DC=domain,DC=de" -Replace:@{"userAccountControl"="8389122"} -Server:"Domcon01.int.domain.de"
