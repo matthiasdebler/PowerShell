@@ -1,0 +1,1 @@
+w32tm /config /computer:dcsrv01.corp.int /manualpeerlist:ch.pool.ntp.org /syncfromflags:manual /update

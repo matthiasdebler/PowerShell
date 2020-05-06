@@ -1,0 +1,7 @@
+#The WinNT in the following IS CASE SENSITIVE
+
+$connection = [ADSI]”WinNT://dcsrv01”
+$lGroup = $connection.Create(“Group”,”DHCP Administrators”)
+$lGroup.SetInfo()
+$lGroup = $connection.Create(“Group”,”DHCP Users”)
+$lGroup.SetInfo()
