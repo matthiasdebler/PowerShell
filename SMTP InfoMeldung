@@ -1,0 +1,23 @@
+# Über diesen Mailserver wird vorher eine InfoMail gesendet
+$MailSMTPServer='exchange01'
+
+# Mailverteiler Empfaenger 
+$MailRecipient= 'absender@e-zuku.de'
+
+# Folgender Betreff hat die InfoMail
+$MailSubject= 'Das ist die Betreffzeile'
+
+# Dieser Text steht in der InfoMail
+$MailText= "Diese Information wurde abgesendet an $MailRecipient von $MailFrom über Mailserver $MailSMTPServer "
+
+# Dies ist der Absender der InfoMail
+$MailFrom= 'absender@e-zuku.de'
+
+
+
+
+Send-MailMessage -SmtpServer $MailSMTPServer -To $MailRecipient -From $MailFrom -Subject $MailRecipient -Body $MailText -Encoding ([System.Text.Encoding]::UTF8)
+        
+
+
+
