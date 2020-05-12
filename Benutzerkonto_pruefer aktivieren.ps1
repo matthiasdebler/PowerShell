@@ -1,13 +1,13 @@
 # Account aktivieren
-Set-ADObject -Identity:"CN=pruefer,OU=Benutzer,OU=Team Prüfer,OU=WG Teams,DC=int,DC=e-zuku,DC=de" -Replace:@{"userAccountControl"="8389120"} -Server:"Domcon01.int.e-zuku.de"
-Set-ADObject -Identity:"CN=pruefer1,OU=Benutzer,OU=Team Prüfer,OU=WG Teams,DC=int,DC=e-zuku,DC=de" -Replace:@{"userAccountControl"="8389120"} -Server:"Domcon01.int.e-zuku.de"
+Set-ADObject -Identity:"CN=pruefer,OU=Benutzer,OU=Team PrÃ¼fer,OU=Teams,DC=int,DC=e-zuku,DC=de" -Replace:@{"userAccountControl"="8389120"} -Server:"Domcon01.int.e-zuku.de"
+Set-ADObject -Identity:"CN=pruefer1,OU=Benutzer,OU=Team PrÃ¼fer,OU=Teams,DC=int,DC=e-zuku,DC=de" -Replace:@{"userAccountControl"="8389120"} -Server:"Domcon01.int.e-zuku.de"
 
 
 
 # Zufallspasswort generieren
 $length = 8
-$Password1 = (New-Guid).Tostring().replace(„-„,““).Substring((Get-Random –Minimum 0 –Maximum (31-$length)),$length)
-$Password2 = (New-Guid).Tostring().replace(„-„,““).Substring((Get-Random –Minimum 0 –Maximum (31-$length)),$length)
+$Password1 = (New-Guid).Tostring().replace(â€ž-â€ž,â€œâ€œ).Substring((Get-Random â€“Minimum 0 â€“Maximum (31-$length)),$length)
+$Password2 = (New-Guid).Tostring().replace(â€ž-â€ž,â€œâ€œ).Substring((Get-Random â€“Minimum 0 â€“Maximum (31-$length)),$length)
 
 #$Zufallszahl | Get-Member -MemberType Property
 
@@ -21,19 +21,19 @@ $newPassword2 = ConvertTo-SecureString -$Password2 -AsPlainText -Force
 #$newPassword2 = ConvertTo-SecureString -String "Pass123!" -AsPlainText -Force
 
 
-# Kennwort zurücksetzen
+# Kennwort zurÃ¼cksetzen
 
-Set-ADAccountPassword -Identity:"CN=pruefer,OU=Benutzer,OU=Team Prüfer,OU=WG Teams,DC=int,DC=e-zuku,DC=de" -NewPassword:$newPassword1 -Reset:$true -Server:"Domcon01.int.e-zuku.de"
-Set-ADAccountPassword -Identity:"CN=pruefer1,OU=Benutzer,OU=Team Prüfer,OU=WG Teams,DC=int,DC=e-zuku,DC=de" -NewPassword:$newPassword2 -Reset:$true -Server:"Domcon01.int.e-zuku.de"
-
-
-# Password muss bei nächster Anmeldung geändert werden
-
-Set-ADUser -ChangePasswordAtLogon:$true -Identity:"CN=pruefer,OU=Benutzer,OU=Team Prüfer,OU=WG Teams,DC=int,DC=e-zuku,DC=de" -Server:"Domcon01.int.e-zuku.de"
-Set-ADUser -ChangePasswordAtLogon:$true -Identity:"CN=pruefer1,OU=Benutzer,OU=Team Prüfer,OU=WG Teams,DC=int,DC=e-zuku,DC=de" -Server:"Domcon01.int.e-zuku.de"
+Set-ADAccountPassword -Identity:"CN=pruefer,OU=Benutzer,OU=Team PrÃ¼fer,OU=Teams,DC=int,DC=e-zuku,DC=de" -NewPassword:$newPassword1 -Reset:$true -Server:"Domcon01.int.e-zuku.de"
+Set-ADAccountPassword -Identity:"CN=pruefer1,OU=Benutzer,OU=Team PrÃ¼fer,OU=Teams,DC=int,DC=e-zuku,DC=de" -NewPassword:$newPassword2 -Reset:$true -Server:"Domcon01.int.e-zuku.de"
 
 
-# Über diesen Mailserver wird vorher eine InfoMail gesendet
+# Password muss bei nÃ¤chster Anmeldung geÃ¤ndert werden
+
+Set-ADUser -ChangePasswordAtLogon:$true -Identity:"CN=pruefer,OU=Benutzer,OU=Team PrÃ¼fer,OU=Teams,DC=int,DC=e-zuku,DC=de" -Server:"Domcon01.int.e-zuku.de"
+Set-ADUser -ChangePasswordAtLogon:$true -Identity:"CN=pruefer1,OU=Benutzer,OU=Team PrÃ¼fer,OU=Teams,DC=int,DC=e-zuku,DC=de" -Server:"Domcon01.int.e-zuku.de"
+
+
+# Ãœber diesen Mailserver wird vorher eine InfoMail gesendet
 $MailSMTPServer='exchange01'
 
 # Mailverteiler Empfaenger 
@@ -43,16 +43,16 @@ $MailRecipient= 'edv@e-zuku.de'
 $MailSubject= 'Folgende Accounts wurden automatisch deaktiviert'
 
 # Dieser Text steht in der InfoMail
-$MailText= "Diese Information wurde abgesendet an $MailRecipient von $MailFrom über Mailserver $MailSMTPServer .
+$MailText= "Diese Information wurde abgesendet an $MailRecipient von $MailFrom Ã¼ber Mailserver $MailSMTPServer .
 
-Die Benutzerkonten Pruefer und Prüfer1 wurden aktiviert. Die Startpaßwörter wurden automatisch erzeugt.
+Die Benutzerkonten Pruefer und PrÃ¼fer1 wurden aktiviert. Die StartpaÃŸwÃ¶rter wurden automatisch erzeugt.
  
 --------------------------------------------------------------------------------------------------------
- Das Start-Passwort für das Benutzerkonto pruefer  lautet :                          $Password1   
- Das Start-Passwort für das Benutzerkonto pruefer1 lautet :                         $Password2    
+ Das Start-Passwort fÃ¼r das Benutzerkonto pruefer  lautet :                          $Password1   
+ Das Start-Passwort fÃ¼r das Benutzerkonto pruefer1 lautet :                         $Password2    
 --------------------------------------------------------------------------------------------------------
 
-Hinweis: Das Start-Paßwort muss vom Benutzer bei der ersten Anmeldung geändert werden.
+Hinweis: Das Start-PaÃŸwort muss vom Benutzer bei der ersten Anmeldung geÃ¤ndert werden.
 
 
 Team EDV"
