@@ -1,0 +1,12 @@
+# Erstellen einer Variable mit dem "sicheren" Passwort
+$newPassword = ConvertTo-SecureString -String "Pass123!" -AsPlainText -Force
+
+
+
+# Kennwort zurücksetzen
+
+Set-ADAccountPassword -Identity:"CN=pruefer,OU=Benutzer,OU=Team Prüfer,OU=WG Teams,DC=int,DC=e-zuku,DC=de" -NewPassword:$newPassword -Reset:$true -Server:"SMTPServer.int.e-zuku.de"
+
+# Password muss bei nächster Anmeldung geändert werden
+
+Set-ADUser -ChangePasswordAtLogon:$true -Identity:"CN=pruefer,OU=Benutzer,OU=Team Prüfer,OU=WG Teams,DC=int,DC=e-zuku,DC=de" -Server:"SMTPServer.int.e-zuku.de"
