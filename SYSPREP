@@ -1,0 +1,16 @@
+#
+Syntax
+Invoke-Command -ComputerName COMPUTER -ScriptBlock { COMMAND } -credential USERNAME
+Enter-PSSession -ComputerName COMPUTER -Credential USER
+
+
+#Variante
+
+Start-Process -FilePath C:\Windows\System32\Sysprep\Sysprep.exe -ArgumentList ‘/generalize /oobe /shutdown /quiet’
+
+#Variante
+
+$sysprep = 'C:\Windows\System32\Sysprep\Sysprep.exe'
+$arg = '/generalize /oobe /shutdown /quiet'
+$sysprep += " $arg"
+Invoke-Expression $sysprep
