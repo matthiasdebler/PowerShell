@@ -1,0 +1,4 @@
+$AnmeldeDaten = Get-Credentilas 
+
+Quelle
+https://books.google.de/books?id=n1HdAgAAQBAJ&pg=PT443&lpg=PT443&dq=VirtualMachine.GuestOperations.Execute+and+VirtualMachine.GuestOperations.Modify+privileges.&source=bl&ots=skyOWu1nsz&sig=ACfU3U0n7DrZHpAoomqsM6VTJJrjIlT2Ag&hl=de&sa=X&ved=2ahUKEwib6M-AvMLpAhWQDuwKHSUCAjUQ6AEwBXoECAoQAQ#v=onepage&q=VirtualMachine.GuestOperations.Execute%20and%20VirtualMachine.GuestOperations.Modify%20privileges.&f=false
