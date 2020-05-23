@@ -1,0 +1,39 @@
+# Get scheduled tasks from remote computer
+# Quelle: https://gallery.technet.microsoft.com/scriptcenter/Get-Scheduled-tasks-from-3a377294
+
+
+<#    
+.SYNOPSIS    
+Script that returns scheduled tasks on a computer 
+     
+.DESCRIPTION  
+This script uses the Schedule.Service COM-object to query the local or a remote computer in order to gather    a formatted list including the Author, UserId and description of the task. This information is parsed from the XML attributed to provide a more human readable format 
+  
+.PARAMETER Computername 
+The computer that will be queried by this script, local administrative permissions are required to query this information 
+ 
+.NOTES    
+Name: Get-ScheduledTask.ps1 
+Author: Jaap Brasser 
+DateCreated: 2012-05-23 
+DateUpdated: 2015-08-06 
+Site: http://www.jaapbrasser.com 
+Version: 1.3.1 
+ 
+.LINK 
+http://www.jaapbrasser.com 
+     
+.EXAMPLE    
+    .\Get-ScheduledTask.ps1 -Computername mycomputer1 
+ 
+Description  
+-----------      
+This command query mycomputer1 and display a formatted list of all scheduled tasks on that computer 
+ 
+.EXAMPLE    
+    .\Get-ScheduledTask.ps1 
+ 
+Description  
+-----------      
+This command query localhost and display a formatted list of all scheduled tasks on the local computer     
+#>
