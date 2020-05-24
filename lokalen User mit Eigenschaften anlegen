@@ -1,3 +1,6 @@
+
+#Quelle: https://blog.netwrix.de/2019/11/13/hinzufuegen-entfernen-und-aendern-von-lokalen-benutzern-und-gruppen-mit-powershell/
+
 clear
 #aufrämen alten benutzer löschen
 Remove-LocalUser -Name Admin2 -Verbose
