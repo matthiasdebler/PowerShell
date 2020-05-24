@@ -1,0 +1,26 @@
+clear
+#aufrämen alten benutzer löschen
+Remove-LocalUser -Name Admin2 -Verbose
+#lokalen User anlegen  
+$UserPassword = ConvertTo-SecureString -String "Pass123!" -AsPlainText -Force
+New-LocalUser "Admin2" -Password $UserPassword -FullName "Admin2" -Description "CompleteVisibility"
+
+# Passwort auf niemals ablaufen setzen
+Set-LocalUser -Name Admin2 –PasswordNeverExpires $False
+
+# zur Gruppe der Administratoren hinzufügen
+Add-LocalGroupMember -Group 'Administratoren' -Member ('Admin2') –Verbose
+
+# lokale Gruppe zur Gruppe der lokalen Administratoren hinzufügen
+# Add-LocalGroupMember -Group 'Administratoren' -Member (,’lokale Gruppe') –Verbose
+
+# Eigenschaften anzeigen
+
+Get-LocalUser -Name ‘Admin2’ | Select-Object *
+Get-LocalUser -Name ‘Admin2’ | Select-Object Name, FullName,PrincipalSource, ObjectClass  
+
+# Liste aller Mitglieder der lokalen Gruppe Administratoren
+Get-LocalGroupMember -Group 'Administratoren'
+
+# letztes Passwortänderung am
+Get-LocalUser -Name ‘Admin2’ | Select-Object PasswordLastSet
