@@ -1,0 +1,10 @@
+Zielmaschine : Firewall prüfen
+Zielmaschine : winrm quickconfig ausführen
+Zielmaschine : Port 5985 ist zum Abhören eingehender Verbindungen geöffnet, mit netstat -a testen
+
+#Quellmaschine: Verbindung zur Zielmaschine testen
+Invoke-Command	-ComputerName 192.168.1.148 -Port 5986 -Credential (Get-Credential)
+# Anmeldefenster wir geöffnet
+
+# Ausführungsscript vorher auf Zielmaschine platzieren
+Invoke-Command -Computername 192.168.1.48 -filepath c:\tmp\User.ps1
