@@ -1,0 +1,41 @@
+Quelle:
+https://docs.vmware.com/de/VMware-vRealize-Operations-for-Published-Applications/6.5/com.vmware.v4pa.admin_install/GUID-D95FBEC0-0A77-4A91-B146-DD82A9C9F697.html
+https://www.windowspro.de/wolfgang-sommergut/powershell-remote-ausfuehren-winrm-ueber-gpos-aktivieren
+
+Möchte man eine interaktive Session auf einem Remote-PC öffnen oder dort Cmdlets ausführen, die den Parameter -Computername nicht unterstützen, dann bietet PowerShell auch dafür Mechanismen an. Eine interaktive Kommandozeile lässt sich auf entfernten Systemen mit
+
+Enter-PSSession <Computer-Name>
+
+öffnen, beendet wird sie mit Exit-PSSession. Die PowerShell_ISE enthält zu diesem Zweck im Menü Datei den Befehl Neue Remote-PowerShell-Registerkarte, der ein neues Fenster öffnet und in einem Dialog nach dem Namen des entfernten Rechners und den Anmeldedaten fragt.
+
+In der PowerShell_ISE fällt es leicht, eine neue Remote-Session zu starten.
+
+---------------------------------------------------------------------------------------------------------------
+
+Wenn Sie PowerShell-Remoting noch nicht aktiviert haben und das HTTP-Protokoll verwenden möchten, führen Sie die folgenden Schritte aus.
+
+Wenn Sie stattdessen das HTTPS-Protokoll verwenden möchten, überspringen Sie diesen Abschnitt und fahren Sie mit Aktivieren des HTTPS-Protokolls für PowerShell-Remoting fort.
+Prozedur
+Um HTTP für PowerShell-Remoting zu verwenden, führen Sie den folgenden Befehl auf dem Host aus:
+
+winrm quickconfig
+
+Ergebnisse
+
+Port 5985 ist zum Abhören eingehender Verbindungen geöffnet. In manchen Fällen funktioniert die Verbindung von der Remote-PowerShell aufgrund des folgenden Fehlers nicht:
+
+Die Verbindung zum Remoteserver ist mit der folgenden Fehlermeldung (sinngemäß) fehlgeschlagen: Der WinRM-Client kann die Anforderung nicht verarbeiten.
+
+Wenn das Authentifizierungsschema ein anderes als Kerberos ist oder der Clientcomputer nicht mit einer Domäne verbunden ist, müssen Sie HTTPS Transport verwenden. Alternativ dazu können Sie die Zielmaschine der TrustedHosts-Konfigurationseinstellung hinzufügen.
+
+Verwenden Sie den folgenden Befehl zum Konfigurieren von TrustedHosts:
+
+winrm.cmd
+
+Hinweis: Computer in der TrustedHosts-Liste sind möglicherweise nicht authentifiziert. Weitere Informationen erhalten Sie, indem Sie folgenden Befehl ausführen:
+
+winrm help config
+
+Sie können auch den folgenden Befehl ausführen, um den Remote-Host auf dem Client als vertrauenswürdigen Host festzulegen:
+
+winrm set winrm/config/client'@{TrustedHosts="10.0.5.35"}'
