@@ -1,3 +1,8 @@
+# Installationsort Module
+There may be several paths listed but there are two main paths you should use, they are:
+C:\Users\userprofile\Documents\WindowsPowerShell\modules
+C:\program files\WindowsPowerShell\Modules\<Module Folder>\<Module Files>
+
 # Beispielskripts für die Systemverwaltung
 https://docs.microsoft.com/de-de/powershell/scripting/samples/sample-scripts-for-administration?view=powershell-7
 
