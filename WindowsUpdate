@@ -1,0 +1,76 @@
+ 
+# Download PSWindowsUpdate , extract in c:\Programme\WidowsPowershell\Module
+ 
+PS:  Import-Module PSWindowsUpdate
+
+# per INVOKE
+PS: Invoke-Command -Computername wsus1.int.frohe-zukunft.de -filepath "\\zielcomputer\c$\tmp\Check for Updates - Install and reboot.ps1"
+
+# local
+PS:  "Check for Updates - Install and reboot.ps1"
+----------------------------------------------------------------------------------------------------------------------------------
+
+Beispiel:
+
+PS C:\Windows\system32> Invoke-Command -Computername wsus1.int.frohe-zukunft.de -filepath "\\wsus1\c$\tmp\Check for Updates - Install and reboot.ps1"
+Task/Job Already Registered:
+
+
+PSComputerName     : wsus1.int.frohe-zukunft.de
+RunspaceId         : c2e49027-bd44-4f75-b39c-a8776dd7ca13
+Actions            : {MSFT_TaskExecAction}
+Author             : 
+Date               : 
+Description        : 
+Documentation      : 
+Principal          : MSFT_TaskPrincipal2
+SecurityDescriptor : 
+Settings           : MSFT_TaskSettings3
+Source             : 
+State              : 3
+TaskName           : 001_CheckAndInstallUpdates
+TaskPath           : \
+Triggers           : {MSFT_TaskTimeTrigger}
+URI                : \001_CheckAndInstallUpdates
+Version            : 
+
+Starting Update Process...
+Checking Preriquisites:
+   PS Version: 5 (Pass)
+   PSWindowsUpdate Module (Pass)
+Checking For Avaliable Updates:
+   Updates Found:
+
+ComputerName Status  KB_ID     Size Title                                                                                   RebootRequired SupportUrl                    
+------------ ------  -----     ---- -----                                                                                   -------------- ----------                    
+WSUS1        ------- KB4481252 13MB Microsoft Silverlight (KB4481252)                                                                False http://go.microsoft.com/fwl...
+WSUS1        -D----- KB890830  30MB Windows-Tool zum Entfernen bösartiger Software x64 - v5.82 (KB890830)                            False http://support.microsoft.com  
+WSUS1        -D----- KB4556813 1GB  2020-05 Kumulatives Update für Windows Server 2016 für x64-basierte Systeme (KB4556813)          False https://support.microsoft.c...
+WSUS1        ------- KB4494175 2MB  2020-01 Update für Windows Server 2016 für x64-basierte Systeme (KB4494175)                      False https://support.microsoft.c...
+
+
+
+Downloading / Installing(4) Update(s)
+Size                            : 13MB
+Status                          : A------
+ComputerName                    : WSUS1
+KB                              : KB4481252
+X                               : 1
+ChooseResult                    : Accepted
+Result                          : Accepted
+PSComputerName                  : wsus1.int.frohe-zukunft.de
+RunspaceId                      : c2e49027-bd44-4f75-b39c-a8776dd7ca13
+Title                           : Microsoft Silverlight (KB4481252)
+AutoSelectOnWebSites            : False
+BundledUpdates                  : {System.__ComObject}
+CanRequireSource                : False
+Categories                      : {System.__ComObject, System.__ComObject}
+Deadline                        : 
+DeltaCompressedContentAvailable : False
+DeltaCompressedContentPreferred : True
+Description                     : Microsoft Silverlight ist ein kompaktes Webbrowser-Plug-In für Windows und Mac OS X, das in weit verbreiteten Browsern Video/Audio in 
+                                  hoher Qualität, Animation und komfortablere Website-Erlebnisse bietet.
+EulaAccepted                    : False
+EulaText                        : 
+                                  Silverlight wird automatisch aktualisiert. Führen Sie einen Bildlauf zu den Datenschutzbestimmungen durch, um weitere Informationen zu 
+                                  erhalten.
