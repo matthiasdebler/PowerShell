@@ -1,4 +1,4 @@
- 
+# Quelle: https://www.computerweekly.com/de/tipp/Windows-Updates-per-PowerShell-automatisch-ausrollen
 # Download PSWindowsUpdate , extract in c:\Programme\WidowsPowershell\Module
  
 PS:  Import-Module PSWindowsUpdate
