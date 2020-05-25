@@ -1,6 +1,29 @@
  Quelle: https://www.computerweekly.com/de/tipp/Windows-Updates-per-PowerShell-automatisch-ausrollen
  
- Get-WindowsUpdate -install -acceptall -autoreboot
+ Diverse Optionen:
+ https://www.windowspro.de/wolfgang-sommergut/windows-updates-powershell-abfragen-herunterladen-installieren
+
+
+
+
+----------------------------------------------------------------------------------------------------
+# Updates ermitteln
+Get-WindowsUpdate -ComputerName
+
+PS C:\Windows\system32> Get-WindowsUpdate -ComputerName wsus1
+
+ComputerName Status     KB          Size Title                                                                                                                           
+------------ ------     --          ---- -----                                                                                                                           
+wsus1        -------    KB4481252   13MB Microsoft Silverlight (KB4481252)                                                                                               
+wsus1        -D-----    KB4556813    1GB 2020-05 Kumulatives Update für Windows Server 2016 für x64-basierte Systeme (KB4556813)                                         
+wsus1        -------    KB4494175    2MB 2020-01 Update für Windows Server 2016 für x64-basierte Systeme (KB4494175)                                                     
+
+
+
+
+
+
+Get-WindowsUpdate -install -acceptall -autoreboot
 ----------------------------------------------------------------------------------------------------- 
  PS C:\Windows\system32> Get-WindowsUpdate -install 
 
