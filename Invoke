@@ -23,3 +23,6 @@ Invoke-Command -Computername 192.168.1.48 -filepath c:\tmp\User.ps1
 Invoke-Command -Computername localhost -filepath c:\tmp\User.ps1
 # mehrere Zielmaschinen
 Invoke-Command -Computername Server-1, Server-2 {Befehle}
+
+# Test
+Enter-PSSession -ComputerName WS2016-VM1
