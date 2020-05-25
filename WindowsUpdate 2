@@ -34,7 +34,7 @@ PS C:\Windows\system32> Invoke-Command -Computername wsus1.int.frohe-zukunft.de 
 Task/Job Already Registered:
 
 
-PSComputerName     : wsus1.int.frohe-zukunft.de
+PSComputerName     : wsus1.in-zukunft.de
 RunspaceId         : 412bc096-c598-4d86-84bb-15b5b62b806c
 Actions            : {MSFT_TaskExecAction}
 Author             : 
