@@ -1,0 +1,74 @@
+ Quelle: https://www.computerweekly.com/de/tipp/Windows-Updates-per-PowerShell-automatisch-ausrollen
+ 
+ Get-WindowsUpdate -install -acceptall -autoreboot
+----------------------------------------------------------------------------------------------------- 
+ PS C:\Windows\system32> Get-WindowsUpdate -install 
+
+X ComputerName Result     KB          Size Title                                                                                                                         
+- ------------ ------     --          ---- -----                                                                                                                         
+1 WIN2112      Accepted               18MB RICOH - Printer - 10/20/2017 12:00:00 AM - 2.4.0.0                                                                            
+1 WIN2112      Accepted               18MB RICOH - Printer - 10/20/2017 12:00:00 AM - 2.4.0.0                                                                            
+2 WIN2112      Downloaded             18MB RICOH - Printer - 10/20/2017 12:00:00 AM - 2.4.0.0                                                                            
+2 WIN2112      Downloaded             18MB RICOH - Printer - 10/20/2017 12:00:00 AM - 2.4.0.0                                                                            
+3 WIN2112      Failed                 18MB RICOH - Printer - 10/20/2017 12:00:00 AM - 2.4.0.0                                                                            
+3 WIN2112      Failed                 18MB RICOH - Printer - 10/20/2017 12:00:00 AM - 2.4.0.0       
+
+
+------------------------------------------------------------------------------------------------------
+
+PS C:\Windows\system32>  Install-WindowsUpdate -install -acceptall -autoreboot
+
+X ComputerName Result     KB          Size Title                                                                                                                         
+- ------------ ------     --          ---- -----                                                                                                                         
+1 WIN2112      Accepted               18MB RICOH - Printer - 10/20/2017 12:00:00 AM - 2.4.0.0                                                                            
+1 WIN2112      Accepted               18MB RICOH - Printer - 10/20/2017 12:00:00 AM - 2.4.0.0                                                                            
+2 WIN2112      Downloaded             18MB RICOH - Printer - 10/20/2017 12:00:00 AM - 2.4.0.0                                                                            
+2 WIN2112      Downloaded             18MB RICOH - Printer - 10/20/2017 12:00:00 AM - 2.4.0.0                                                                            
+3 WIN2112      Failed                 18MB RICOH - Printer - 10/20/2017 12:00:00 AM - 2.4.0.0                                                                            
+3 WIN2112      Failed                 18MB RICOH - Printer - 10/20/2017 12:00:00 AM - 2.4.0.0                                                                            
+
+
+---------------------------------------------------------------------------------------------------------
+
+PS C:\Windows\system32> Invoke-Command -Computername wsus1.int.frohe-zukunft.de -filepath "\\wsus1\c$\tmp\Check for Updates - Install and reboot.ps1"
+Task/Job Already Registered:
+
+
+PSComputerName     : wsus1.int.frohe-zukunft.de
+RunspaceId         : 412bc096-c598-4d86-84bb-15b5b62b806c
+Actions            : {MSFT_TaskExecAction}
+Author             : 
+Date               : 
+Description        : 
+Documentation      : 
+Principal          : MSFT_TaskPrincipal2
+SecurityDescriptor : 
+Settings           : MSFT_TaskSettings3
+Source             : 
+State              : 3
+TaskName           : 001_CheckAndInstallUpdates
+TaskPath           : \
+Triggers           : {MSFT_TaskTimeTrigger}
+URI                : \001_CheckAndInstallUpdates
+Version            : 
+
+Starting Update Process...
+Checking Preriquisites:
+   PS Version: 5 (Pass)
+   PSWindowsUpdate Module (Pass)
+Checking For Avaliable Updates:
+   Updates Found:
+
+ComputerName Status  KB_ID     Size Title                                                                                   RebootRequired SupportUrl                    
+------------ ------  -----     ---- -----                                                                                   -------------- ----------                    
+WSUS1        ------- KB4481252 13MB Microsoft Silverlight (KB4481252)                                                                False http://go.microsoft.com/fwl...
+WSUS1        -D----- KB4556813 1GB  2020-05 Kumulatives Update für Windows Server 2016 für x64-basierte Systeme (KB4556813)          False https://support.microsoft.c...
+WSUS1        ------- KB4494175 2MB  2020-01 Update für Windows Server 2016 für x64-basierte Systeme (KB4494175)                      False https://support.microsoft.c...
+
+
+
+Downloading / Installing(3) Update(s)
+Size                            : 13MB
+Status                          : A------
+ComputerName                    : WSUS1
+KB                              : KB4481252
