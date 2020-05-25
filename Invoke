@@ -2,6 +2,8 @@ Zielmaschine : Firewall prüfen
 Zielmaschine : "winrm quickconfig" ausführen, aktivieren
                "Enable-PSRemoting"
 Zielmaschine : Port 5985 ist zum Abhören eingehender Verbindungen geöffnet, mit netstat -a testen
+Zielmaschine: Scriptsausführung auf Zielmaschine erlauben  Quelle: https://www.windowspro.de/andreas-kroschel/powershell-executionpolicy-setzen-scripts-signieren-und-ausfuehren
+              Set-ExecutionPolicy -ExecutionPolicy Bypass
 
 
 #Quellmaschine: Verbindung zur Zielmaschine testen
