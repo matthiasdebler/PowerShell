@@ -16,7 +16,7 @@ PS C:\Windows\system32> Invoke-Command -Computername wsus1.int.frohe-zukunft.de 
 Task/Job Already Registered:
 
 
-PSComputerName     : wsus1.int.frohe-zukunft.de
+PSComputerName     : wsus1.int.fkunft.de
 RunspaceId         : c2e49027-bd44-4f75-b39c-a8776dd7ca13
 Actions            : {MSFT_TaskExecAction}
 Author             : 
@@ -58,7 +58,7 @@ KB                              : KB4481252
 X                               : 1
 ChooseResult                    : Accepted
 Result                          : Accepted
-PSComputerName                  : wsus1.int.frohe-zukunft.de
+PSComputerName                  : wsus1.izukunft.de
 RunspaceId                      : c2e49027-bd44-4f75-b39c-a8776dd7ca13
 Title                           : Microsoft Silverlight (KB4481252)
 AutoSelectOnWebSites            : False
