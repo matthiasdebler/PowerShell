@@ -6,3 +6,9 @@ https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=Tag
 
 # AD Modul installieren
 https://nt4admins.de/powershell/ad-powershell-modul-installieren/
+
+# Modul kopieren
+%WINDIR%\System32\WindowsPowerShell\v1.0\Modules 
+
+# Modul in PS aktivieren
+Import-Module PSWindowsUpdate
