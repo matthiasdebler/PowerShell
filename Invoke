@@ -3,7 +3,13 @@ Zielmaschine : "winrm quickconfig" ausführen, aktivieren
                "Enable-PSRemoting"
 Zielmaschine : Port 5985 ist zum Abhören eingehender Verbindungen geöffnet, mit netstat -a testen
 Zielmaschine: Scriptsausführung auf Zielmaschine erlauben  Quelle: https://www.windowspro.de/andreas-kroschel/powershell-executionpolicy-setzen-scripts-signieren-und-ausfuehren
-              Set-ExecutionPolicy -ExecutionPolicy Bypass
+              Set-ExecutionPolicy -ExecutionPolicy Bypass   
+
+Wichtig, Host müssen sich vertrauen. In Domäne standardmäßi ok. In Arbeitsgruppe vertrauenswürdiges Hosts festlegen
+Auf Ziel und Quelle mit genegenseitiger IP:
+ 
+ cd wsman:\localhost\client
+ Set-Item TrustedHosts -Value 192.168.1.48 -Force
 
 
 #Quellmaschine: Verbindung zur Zielmaschine testen
