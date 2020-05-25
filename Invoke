@@ -6,6 +6,7 @@ Zielmaschine:  Scriptsausführung auf Zielmaschine erlauben  Quelle: https://www
                Set-ExecutionPolicy -ExecutionPolicy Bypass   
 
 Wichtig, Host müssen sich vertrauen. In Domäne standardmäßi ok. In Arbeitsgruppe vertrauenswürdiges Hosts festlegen
+Quelle: https://sid-500.com/2017/02/15/enter-pssession-trusted-hosts-konfigurieren/
 Auf Ziel und Quelle mit genegenseitiger IP:
  
  cd wsman:\localhost\client
