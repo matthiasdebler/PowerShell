@@ -37,21 +37,39 @@ PowerShell Cmdlets:
 # Register-ScheduledTask       , um diesen dem Task Scheduler hinzuzufügen
 
 
+------------------------------------------------------------------------------------------------------
+
 Als Skript für den obigen Anwendungsfall sieht dies beispielhaft dann so aus:
 
 ps-Script:
 
+# Variable für Argumentzeile im Scheduler definieren
 $argument = "-Command `"& 'C:\temp\TestScript.ps1' -p1 'hallo' -p2 'Welt'`""
+# Angabe welches Prgramm gestartet werden soll mit Argument Variable
 $action = New-ScheduledTaskAction -Execute 'PowerShell.exe' -Argument $argument
-$principal = New-ScheduledTaskPrincipal -UserID "NT AUTHORITY\SYSTEM" -LogonType 
-ServiceAccount -RunLevel Highest
+# Variable für Auführendes Konto festlegen
+$principal = New-ScheduledTaskPrincipal -UserID "NT AUTHORITY\SYSTEM" -LogonType ServiceAccount -RunLevel Highest
+# Ausführungszeit in Variable festlegen
 $trigger = New-ScheduledTaskTrigger -AtStartup
+# Task wird aggregiert (..angelegt)
 $task = New-ScheduledTask -Action $action -Principal $principal -Trigger $trigger
+# Task wird im Scheduler registriert
 Register-ScheduledTask "ExampleTask" -InputObject $task -Force
 
 
+-------------------------------------------------------------------------------------------------------
 
 
+als Invoke Command:
 
+PS C:\Windows\system32> xcopy c:\tmp\Task.ps1     \\wsus1\c$\tmp\
+C:\tmp\Task.ps1
+1 Datei(en) kopiert
+
+PS C:\Windows\system32> Invoke-Command -Computername wsus1.int.frohe-zukunft.de  -Credential wghalle\domino  -filepath "\\wsus1\c$\tmp\Task.ps1"
+
+TaskPath                                       TaskName                          State      PSComputerName                                                            
+--------                                       --------                          -----      --------------                                                            
+\                                              ExampleTask                       Ready      wsus1.int.frohe-zukunft.de                                                
 
 
