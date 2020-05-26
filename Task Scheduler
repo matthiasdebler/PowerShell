@@ -1,0 +1,57 @@
+
+# PowerShell und der Task Scheduler
+Quellen:
+https://www.active-directory-faq.de/2018/06/powershell-skripte-zeitgesteuert-ausfuehren-mit-task-scheduler/
+https://www.active-directory-faq.de/2018/08/tasks-per-powershell-anlegen/
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------------
+Task:
+Programm              Powershell.exe
+
+Argument              -Command "&'C:\temp\TestScript.ps1'-p1'hallo'-p2'welt'"
+
+Der Command Schalter bewirkt, dass alles Nachfolgende so ausgeführt wird, als wäre es direkt über die Kommandozeile eingegeben worden.
+Ich brauche hier allerdings eine ganze Zeichenfolge, nicht nur einen einzelnen Wert.
+Daher muss alles mit “& … ” umschlossen werden. Dies führt wiederum dazu, dass innerhalb der Zeichenkette Hochkommata zu verwenden sind.
+
+Testscript.ps1:
+Param(
+    $p1,
+    $p2
+)
+($p1 + " " + $p2) | Out-File "C:\temp\test.txt" -Append
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+# Tasks mit PowerShell beschleunigen
+
+
+PowerShell Cmdlets:
+
+# New-ScheduledTaskAction      , um anzugeben, welches Programm man ausführt
+# New-ScheduledTaskPrincipal   , um den Nutzer anzugeben, unter dem der Task ausgeführt werden soll
+# New-ScheduledTaskTrigger     , um festzulegen, wann etwas ausgeführt wird
+# New-ScheduledTask            , um den Task zu aggregieren
+# Register-ScheduledTask       , um diesen dem Task Scheduler hinzuzufügen
+
+
+Als Skript für den obigen Anwendungsfall sieht dies beispielhaft dann so aus:
+
+ps-Script:
+
+$argument = "-Command `"& 'C:\temp\TestScript.ps1' -p1 'hallo' -p2 'Welt'`""
+$action = New-ScheduledTaskAction -Execute 'PowerShell.exe' -Argument $argument
+$principal = New-ScheduledTaskPrincipal -UserID "NT AUTHORITY\SYSTEM" -LogonType 
+ServiceAccount -RunLevel Highest
+$trigger = New-ScheduledTaskTrigger -AtStartup
+$task = New-ScheduledTask -Action $action -Principal $principal -Trigger $trigger
+Register-ScheduledTask "ExampleTask" -InputObject $task -Force
+
+
+
+
+
+
+
