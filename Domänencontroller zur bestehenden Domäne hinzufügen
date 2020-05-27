@@ -1,0 +1,20 @@
+
+
+# Domänencontroller zur bestehenden Domäne hinzufügen
+# Windows PowerShell-Skript für AD DS-Bereitstellung
+#
+
+Import-Module ADDSDeployment
+Install-ADDSDomainController `
+-NoGlobalCatalog:$false `
+-CreateDnsDelegation:$true `
+-CriticalReplicationOnly:$false `
+-DatabasePath "C:\Windows\NTDS" `
+-DomainName "i-ukunft.de" `
+-InstallDns:$true `
+-LogPath "C:\Windows\NTDS" `
+-NoRebootOnCompletion:$false `
+-SiteName "Zangerstrasse" `
+-SysvolPath "C:\Windows\SYSVOL" `
+-Force:$true
+
